@@ -161,7 +161,7 @@
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
 % Set the FontAwesome font to be up-to-date.
-\newfontfamily\FA[Path=\@fontdir]{FontAwesome}
+\setfontfamily\FA[Path=\@fontdir]{FontAwesome}
 % Set font for header (default is Roboto)
 \newfontfamily\headerfont[
   Path=\@fontdir,
@@ -283,7 +283,7 @@
 
 % Defines writer's homepage (optional)
 % Usage: \homepage{<url>}
-\newcommand*{\homepage}[1]{\def\@homepage{#1}}
+\newcommand*{\homepage}[1]{\def\@homepage{#1}\def\@hparam{?source=awesome-cv}}
 
 % Defines writer's github (optional)
 % Usage: \github{<github-nick>}
@@ -452,7 +452,7 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+          \href{http://\@homepage\@hparam}{\faHome\acvHeaderIconSep\@homepage}%
         }%
       \ifthenelse{\isundefined{\@github}}%
         {}%
@@ -555,6 +555,14 @@
   \vspace{2mm}
 }
 
+% Define a paragraph for CV
+\newenvironment{cvtechnologies}{%
+  \fontsize{8pt}{1em}\footerfont\scshape\color{lighttext}
+}{%
+  \par
+  \vspace{2mm}
+}
+
 % Define an environment for cventry
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
@@ -564,7 +572,7 @@
 }
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
-\newcommand*{\cventry}[5]{%
+\newcommand*{\cventry}[6]{%
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
@@ -573,7 +581,10 @@
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
       {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
       \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} \\
+    \ifempty{#6}
+      {}
+      {\entrypositionstyle{#6} \\ }
   \end{tabular*}%
 }
 
