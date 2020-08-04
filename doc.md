@@ -12,6 +12,7 @@
 </dd>
 </dl>
 
+<a name="module_Given"></a>
 All the steps related to the API Request
 
 
@@ -31,6 +32,7 @@ All the steps related to the API Request
     * [~JsonPayloadEmptyArray()](#module_Given..JsonPayloadEmptyArray)
     * [~JsonPayloadTable()](#module_Given..JsonPayloadTable)
 
+<a name="module_Given..gateway"></a>
 ### Given I have the api gateway
 Define the api gateway host take a look at the config file.
 
@@ -43,6 +45,7 @@ Given I have the api gateway
 If you want to use a specific host you can use
 Given I have the api gateway hosted on "https://api.example.com"
 ```
+<a name="module_Given..path"></a>
 ### Given I have the path {string}
 Define the request path
 placeholder can be used within the path for dynamic call (ex: /users/{{userid}})
@@ -53,6 +56,7 @@ Given I have the path "/users/1"
 Given I have the path "/users/1/addresses"
 Given I have the path "/users/{{ userId }}/addresses"
 ```
+<a name="module_Given..method"></a>
 ### Given I have the method {string}
 Define the request method (default GET)
 Available : GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
@@ -61,6 +65,7 @@ Available : GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
 ```js
 Given I have the method "PATCH"
 ```
+<a name="module_Given..methodPath"></a>
 ### Given I send a {string} request to {string}
 Construct a request to a resource using an HTTP method
 
@@ -71,6 +76,7 @@ Given I send a "POST" request to "/customers"
 Given I send a "PUT" request to "/customers/1234"
 Given I send a "DELETE" request to "/customers/1234"
 ```
+<a name="module_Given..header"></a>
 ### Given the header contains {string} as {string}
 Set one request header
 
@@ -85,6 +91,7 @@ Given the header contains "user-agent" as "curl"
 Given the header contains "Accept-language" as {{ language }}
 Given the header contains "user-agent" as {{ currentUserAgent }}
 ```
+<a name="module_Given..headers"></a>
 ### Given I add the headers:
 Set one or more request headers in a single step.
 
@@ -100,6 +107,7 @@ Given I add the headers:
   | Content-Type     | {{contentType}} |
   | Accept-Language  | {{ language }}  |
 ```
+<a name="module_Given..queryString"></a>
 ### Given the query parameter contains {string} as {string}
 Set one or more request query parameters (example: /pets?price=10&name=john)
 
@@ -118,6 +126,7 @@ Given the query parameter contains "offset" as 30
 Given the query parameter contains "sort" as {{ price }}
 Given the query parameter contains "name" as {{ name }}
 ```
+<a name="module_Given..queriesString"></a>
 ### Given I add the query string parameters:
 Set one or more request query parameter in a single step.
 
@@ -133,6 +142,7 @@ Given I add the query string parameters:
   | sort     | {{ sort }} |
   | name     | {{ name }}  |
 ```
+<a name="module_Given..JsonPayload"></a>
 ### Given the payload contains {string} as {string | int | float | placeholder | data}
 Set one or more request json body (support dot-object or jsonpath property)
 
@@ -160,6 +170,7 @@ Given the paylaod contains "sort" as {{ price }}
 Given the paylaod contains "name" as {{ name }}
 Given the paylaod contains "list.name" as {{ name }}
 ```
+<a name="module_Given..JsonPayloadNull"></a>
 ### Given the payload contains {string} as null
 Set a value as null in the json request body (support dot-object or jsonpath property)
 
@@ -168,6 +179,7 @@ Set a value as null in the json request body (support dot-object or jsonpath pro
 Given the payload contains "firstname" as null
 Given the payload contains "user.firstname" as null
 ```
+<a name="module_Given..JsonPayloadTrue"></a>
 ### Given the payload contains {string} as true
 Set a value as true in the json request body (support dot-object or jsonpath property)
 
@@ -176,6 +188,7 @@ Set a value as true in the json request body (support dot-object or jsonpath pro
 Given the payload contains "active" as true
 Given the payload contains "user.active" as true
 ```
+<a name="module_Given..JsonPayloadFalse"></a>
 ### Given the payload contains {string} as false
 Set a value as false in the json request body (support dot-object or jsonpath property)
 
@@ -184,6 +197,7 @@ Set a value as false in the json request body (support dot-object or jsonpath pr
 Given the payload contains "active" as false
 Given the payload contains "user.active" as false
 ```
+<a name="module_Given..JsonPayloadEmptyArray"></a>
 ### Given the payload contains {string} as empty array
 Set a value as empty array in the json request body (support dot-object or jsonpath property)
 
@@ -192,6 +206,7 @@ Set a value as empty array in the json request body (support dot-object or jsonp
 Given the payload contains "list" as empty array
 Given the payload contains "user.list" as empty array
 ```
+<a name="module_Given..JsonPayloadTable"></a>
 ### Given I add the request body:
 Set one or more request body information in a single step.
 
@@ -207,8 +222,10 @@ Given I add the request body:
   | firstname    | {{ firstName }} |
   | lastname     | {{ lastName }}  |
 ```
+<a name="module_When"></a>
 All the steps related to the Api call
 
+<a name="module_When..callApi"></a>
 ### When I run the API
 Trigger the api call
 
@@ -216,6 +233,7 @@ Trigger the api call
 ```js
 When I run the API
 ```
+<a name="module_Then"></a>
 All the steps related to the API response
 
 
@@ -243,6 +261,7 @@ All the steps related to the API response
     * [~saveHeaderPropertyIntoTheDataset()](#module_Then..saveHeaderPropertyIntoTheDataset)
     * [~saveBodyPropertyIntoTheDataset()](#module_Then..saveBodyPropertyIntoTheDataset)
 
+<a name="module_Then..httpCode"></a>
 ### Then I should receive a response with the status {int}
 Ensure the response was received with a given status.
 
@@ -251,6 +270,7 @@ Ensure the response was received with a given status.
 Then I should receive a response with the status 200
 Then I should receive a response with the status 404
 ```
+<a name="module_Then..httpLatency"></a>
 ### Then the response time is under {int} ms
 Ensure the response time is lower than the given time (in microseconds)
 
@@ -258,6 +278,7 @@ Ensure the response time is lower than the given time (in microseconds)
 ```js
 Then the response time is under 100ms
 ```
+<a name="module_Then..header"></a>
 ### Then the header {string} should be {string}
 Ensure a response header equals the expect value
 
@@ -265,6 +286,7 @@ Ensure a response header equals the expect value
 ```js
 Then the header "Content-Type" should be "application/json"
 ```
+<a name="module_Then..headers"></a>
 ### Then the response header should contains:
 Ensure a response header equals the list of values
 
@@ -280,6 +302,7 @@ Then the response headers should contains:
   | Content-Type   | {{ contentType}} |
   | Content-Length | 1458             |
 ```
+<a name="module_Then..headersContains"></a>
 ### Then {string} should be on the response header
 Ensure a response header contains one specific property
 
@@ -288,6 +311,7 @@ Ensure a response header contains one specific property
 Then "Content-Length" should be on the response header
 Then "X-response-time" should be on the response header
 ```
+<a name="module_Then..headersNotContains"></a>
 ### Then {string} should not be on the response header
 Ensure a response header doesn't contain one specific property
 
@@ -296,6 +320,7 @@ Ensure a response header doesn't contain one specific property
 Then "X-response-time" should not be on the response header
 Then "poweered-by" should be not on the response header
 ```
+<a name="module_Then..emptyArray"></a>
 ### Then the response should be empty array
 Ensure a response body contains an empty array
 
@@ -303,6 +328,7 @@ Ensure a response body contains an empty array
 ```js
 Then the response should be empty array
 ```
+<a name="module_Then..notEmptyArray"></a>
 ### Then the response should not be empty array
 Ensure a response body doesn't contain an empty array
 
@@ -310,6 +336,7 @@ Ensure a response body doesn't contain an empty array
 ```js
 Then the response should not be empty array
 ```
+<a name="module_Then..emptyResponse"></a>
 ### Then the response should be empty
 Ensure a response body is empty
 
@@ -317,6 +344,7 @@ Ensure a response body is empty
 ```js
 Then the response should be empty
 ```
+<a name="module_Then..bodyPropertyEqual"></a>
 ### Then the response body at {string} should equal {string | int | data }
 Ensure a JSON response body equals a given value at the JSON path. Equality is determined
 
@@ -332,6 +360,7 @@ Then the response body at "$.id" should equal 10
 Then the response body at "$.user.firstname" should equal "john"
 Then the response body at "$.user.lastname" should equal {{ lastname }}
 ```
+<a name="module_Then..bodyPropertyEqualTrue"></a>
 ### Then the response body at {string} should equal true
 Ensure a JSON response body equals a given boolean value as true
 
@@ -343,6 +372,7 @@ Then the response body at "active" should equal true
 ```js
 Then the response body at "$.active" should equal true
 ```
+<a name="module_Then..bodyPropertyEqualFalse"></a>
 ### Then the response body at {string} should equal false
 Ensure a JSON response body equals a given boolean value as false
 
@@ -354,6 +384,7 @@ Then the response body at "active" should equal false
 ```js
 Then the response body at "$.active" should equal false
 ```
+<a name="module_Then..bodyPropertyEqualNull"></a>
 ### Then the response body at {string} should equal null
 Ensure a JSON response body equals a given null value
 
@@ -365,6 +396,7 @@ Then the response body at "active" should equal null
 ```js
 Then the response body at "$.active" should equal null
 ```
+<a name="module_Then..bodyPropertyEqualEmpty"></a>
 ### Then the response body at {string} should equal empty
 Ensure a JSON response body equals an empty string
 
@@ -376,6 +408,7 @@ Then the response body at "active" should equal empty
 ```js
 Then the response body at "$.active" should equal empty
 ```
+<a name="module_Then..bodyPropertyIsArray"></a>
 ### Then the response body at {string} should be an array
 Ensure a JSON response body equals an array type
 
@@ -387,6 +420,7 @@ Then the response body at "user.list" should be an array
 ```js
 Then the response body at "$.user.list" should be an array
 ```
+<a name="module_Then..bodyPropertyIsArrayOfLenght"></a>
 ### Then the response body at {string} should be an array of {int} item(s)
 Ensure a JSON response body equals an array containing a given items
 
@@ -398,6 +432,7 @@ Then the response body at "user.list" should be an array of 10 item(s)
 ```js
 Then the response body at "$.user.list" should be an array of 10 item(s)
 ```
+<a name="module_Then..bodyPropertyIsATimeCloseToNow"></a>
 ### Then the response body at {string} should be close to now
 Ensure a JSON response body has a time set close to now ( -/+ 1 minute)
 
@@ -409,6 +444,7 @@ Then the response body at "user.createdAt" should equal close to now
 ```js
 Then the response body at "$.user.list" should equal close to now
 ```
+<a name="module_Then..bodyPropertyIsNotNull"></a>
 ### Then the response body at {string} should not be null
 Ensure a JSON response body is not null
 
@@ -420,6 +456,7 @@ Then the response body at "user.children" should not be null
 ```js
 Then the response body at "$.user.childern" should not be null
 ```
+<a name="module_Then..bodyPropertyShouldMatchRegexp"></a>
 ### Then the response body at {string} should match {string}
 Ensure a JSON response body matches a given regexp
 
@@ -431,6 +468,7 @@ Then the response body at "user.occupation" should match "/pilot/"
 ```js
 Then the response body at "$.user.occupation" should match "/pilot/"
 ```
+<a name="module_Then..bodyListContainNumberOfItem"></a>
 ### Then the response list contains {int} items
 Ensure a JSON response body has an array at the root level an contains a given number of items
 
@@ -438,6 +476,7 @@ Ensure a JSON response body has an array at the root level an contains a given n
 ```js
 Then the response list contains "12" items
 ```
+<a name="module_Then..saveHeaderPropertyIntoTheDataset"></a>
 ### Then add the value {string} from the response header to the dataset as {string}
 Pick of the reponse header value and add it into the dataset storage 
 This will allow you to reuse value in another step
@@ -448,6 +487,7 @@ Then add the value "Content-Type"  from the response header to the dataset as "c
 Given i have the api gateway
   And the header contains "Content-Type" as {{ contentTypw }}
 ```
+<a name="module_Then..saveBodyPropertyIntoTheDataset"></a>
 ### Then add the value {string} from the response body to the dataset as {string}
 Pick of the reponse body value and add it into the dataset storage 
 This will allow you to reuse value in another step
